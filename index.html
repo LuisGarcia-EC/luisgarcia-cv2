@@ -1,0 +1,251 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Syne:wght@400;600;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+--g1:#1a3a1a;--g2:#2d5a2d;--g3:#3d7a3d;--g4:#52a852;--g5:#6bc96b;--g6:#a8e6a8;
+--bg:#0d1f0d;--bg2:#122112;--bg3:#1a2e1a;--card:#162816;--border:#2d4f2d;
+--text:#e8f5e8;--text2:#a8c8a8;--text3:#6a926a;--mono:'JetBrains Mono',monospace;--sans:'Syne',sans-serif
+}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:14px;line-height:1.6}
+.cv{max-width:900px;margin:0 auto;padding:24px 20px}
+.header{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:start;padding:28px 32px;background:var(--bg2);border:1px solid var(--border);border-radius:12px;margin-bottom:20px;position:relative;overflow:hidden}
+.header::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;border-radius:50%;border:1px solid var(--border);opacity:.3}
+.name{font-size:28px;font-weight:700;color:var(--g5);letter-spacing:-0.5px;line-height:1.1;margin-bottom:4px}
+.title-tag{font-size:12px;font-family:var(--mono);color:var(--g4);letter-spacing:2px;text-transform:uppercase;margin-bottom:16px}
+.contacts{display:flex;flex-wrap:wrap;gap:10px}
+.ci{display:flex;align-items:center;gap:6px;font-size:12px;font-family:var(--mono);color:var(--text2);background:var(--card);border:1px solid var(--border);padding:5px 10px;border-radius:6px}
+.ci i{color:var(--g4);font-size:14px}
+.ats-badge{
+    width:140px;
+    height:140px;
+    border-radius:18px;
+    overflow:hidden;
+    flex-shrink:0;
+}
+
+.ats-photo{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+.ats-score{font-size:32px;font-weight:700;color:var(--g5);font-family:var(--mono);line-height:1}
+.ats-label{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:1.5px;margin-top:4px;font-family:var(--mono)}
+.ats-sub{font-size:10px;color:var(--g4);margin-top:2px}
+.grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;margin-bottom:16px}
+.grid3{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:16px;margin-bottom:16px}
+.section{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px 22px;margin-bottom:16px}
+.sh{display:flex;align-items:center;gap:8px;margin-bottom:14px}
+.st{font-size:11px;font-family:var(--mono);text-transform:uppercase;letter-spacing:2px;color:var(--g4);font-weight:500}
+.sl{flex:1;height:1px;background:linear-gradient(to right,var(--border),transparent)}
+.profile-text{font-size:13px;color:var(--text2);line-height:1.7}
+.profile-text strong{color:var(--g5);font-weight:600}
+.job{margin-bottom:16px;padding-left:14px;border-left:2px solid var(--g3);border-radius:0}
+.job:last-child{margin-bottom:0}
+.jh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px;flex-wrap:wrap;gap:4px}
+.jc{font-size:14px;font-weight:600;color:var(--g5)}
+.jp{font-size:11px;font-family:var(--mono);color:var(--text3);background:var(--bg3);padding:3px 8px;border-radius:4px}
+.jr{font-size:12px;color:var(--g4);font-family:var(--mono);margin-bottom:8px}
+.jb{list-style:none;padding:0}
+.jb li{font-size:12px;color:var(--text2);margin-bottom:5px;padding-left:14px;position:relative;line-height:1.5}
+.jb li::before{content:'▸';position:absolute;left:0;color:var(--g4);font-size:10px;top:2px}
+.jb li strong{color:var(--text)}
+.tag-cloud{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:11px;font-family:var(--mono);padding:4px 10px;border-radius:5px;border:1px solid var(--border);color:var(--text2);background:var(--bg3)}
+.tag.core{border-color:var(--g3);color:var(--g5);background:rgba(52,122,52,.12)}
+.tag.mid{border-color:var(--border);color:var(--g4)}
+.radar-wrap{width:100%;display:flex;justify-content:center;padding:8px 0}
+.lang-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.lang-row:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.lang-name{font-size:13px;color:var(--text)}
+.lang-level{display:flex;gap:4px;align-items:center}
+.ld{width:10px;height:10px;border-radius:50%}
+.ld.f{background:var(--g4)}
+.ld.e{background:var(--bg3);border:1px solid var(--border)}
+.lt{font-size:10px;font-family:var(--mono);color:var(--text3)}
+.ref-item{margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+.ref-item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.ref-name{font-size:13px;font-weight:600;color:var(--g5)}
+.ref-role{font-size:11px;color:var(--text3);margin-bottom:4px}
+.ref-c{font-size:11px;font-family:var(--mono);color:var(--text2)}
+.db-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+.db-item{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:12px 14px}
+.db-name{font-size:13px;font-weight:600;color:var(--g5);margin-bottom:4px;display:flex;align-items:center;gap:6px}
+.db-name i{color:var(--g4);font-size:14px}
+.db-desc{font-size:11px;color:var(--text2);line-height:1.5}
+.meter-bar{height:5px;background:var(--bg);border-radius:3px;overflow:hidden;margin-top:6px}
+.meter-fill{height:100%;border-radius:3px;background:var(--g3)}
+.edu-block{display:flex;flex-direction:column;gap:6px}
+.edu-degree{font-size:13px;font-weight:600;color:var(--g5)}
+.edu-uni{font-size:12px;color:var(--text2)}
+.edu-badge{font-size:10px;font-family:var(--mono);background:rgba(52,122,52,.2);border:1px solid var(--g3);color:var(--g5);padding:3px 8px;border-radius:4px;display:inline-block}
+.tg{font-size:10px;font-family:var(--mono);color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;margin-top:12px}
+.tg:first-child{margin-top:0}
+</style>
+
+<div class="cv">
+
+<div class="header">
+  <div>
+    <div class="name">Luis Fernando Garcia Gonzalez</div>
+    <div class="title-tag">IT Engineer · Infraestructura · Soporte · Ciberseguridad</div>
+    <div class="contacts">
+      <span class="ci"><i class="ti ti-phone" aria-hidden="true"></i>0962629344</span>
+      <span class="ci"><i class="ti ti-mail" aria-hidden="true"></i>juni_garci@hotmail.com</span>
+      <span class="ci"><i class="ti ti-map-pin" aria-hidden="true"></i>Quito, Ecuador</span>
+    </div>
+  </div>
+<div class="ats-badge">
+  <img src="fotocv.png" alt="Luis García" class="ats-photo">
+</div>
+</div>
+
+<div class="section">
+  <div class="sh"><span class="st">Perfil</span><div class="sl"></div></div>
+  <p class="profile-text">Ingeniero en TI recién graduado de la <strong>Universidad de las Fuerzas Armadas ESPE</strong>, con experiencia práctica en <strong>soporte técnico, administración de infraestructura y petesting</strong>. Capacidad para gestionar incidencias,redes empresariales, y trabajar con bases de datos relacionales en entornos productivos. Orientado a la resolución de problemas y la mejora continua de procesos tecnológicos.</p>
+</div>
+
+<div class="grid2">
+  <div class="section">
+    <div class="sh"><span class="st">Habilidades técnicas</span><div class="sl"></div></div>
+    <div class="radar-wrap">
+      <canvas id="radarChart" width="230" height="230" role="img" aria-label="Diagrama radar de habilidades: soporte TI, infraestructura, ciberseguridad, redes, bases de datos, automatización"></canvas>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+    <script>
+    new Chart(document.getElementById('radarChart'),{
+      type:'radar',
+      data:{
+        labels:['Soporte TI','Infraestructura','Ciberseguridad','Redes','Datos'],
+        datasets:[{
+          label:'Nivel',
+          data:[88,82,75,80,70],
+          backgroundColor:'rgba(61,122,61,0.25)',
+          borderColor:'#6bc96b',
+          borderWidth:2,
+          pointBackgroundColor:'#52a852',
+          pointBorderColor:'#a8e6a8',
+          pointRadius:4
+        }]
+      },
+      options:{
+        responsive:false,
+        scales:{r:{
+          min:0,max:100,
+          ticks:{display:false},
+          grid:{color:'rgba(45,79,45,0.6)'},
+          angleLines:{color:'rgba(45,79,45,0.5)'},
+          pointLabels:{color:'#a8c8a8',font:{size:10,family:'JetBrains Mono'}}
+        }},
+        plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ${c.raw}%`}}}
+      }
+    });
+    </script>
+  </div>
+
+  <div class="section">
+    <div class="sh"><span class="st">Stack tecnológico</span><div class="sl"></div></div>
+    <div class="tg">Infraestructura & sistemas</div>
+    <div class="tag-cloud">
+      <span class="tag core">Linux</span><span class="tag core">Windows Server</span><span class="tag mid">Redes LAN/WAN</span>
+    </div>
+    <div class="tg">Seguridad</div>
+    <div class="tag-cloud">
+      <span class="tag core">Pentesting</span><span class="tag mid">Análisis de vulnerabilidades</span><span class="tag mid">Reportes técnicos</span>
+    </div>
+    <div class="tg">Bases de datos</div>
+    <div class="tag-cloud">
+      <span class="tag core">PostgreSQL</span><span class="tag core">MySQL</span><span class="tag mid">SQL</span>
+    </div>
+    <div class="tg">Desarrollo </div>
+    <div class="tag-cloud">
+      <span class="tag mid">Python</span><span class="tag mid">JavaScript</span></span><span class="tag mid">APIs</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="section">
+  <div class="sh"><span class="st">Experiencia profesional</span><div class="sl"></div></div>
+  <div class="job">
+    <div class="jh">
+      <span class="jc">World Vision</span>
+      <span class="jp">Feb 2025 — Abr 2025</span>
+    </div>
+    <div class="jr">Pasante · Infraestructura y Ciberseguridad</div>
+    <ul class="jb">
+      <li>Resolución de incidencias técnicas de <strong>soporte nivel 2</strong> en entornos empresariales con alta disponibilidad.</li>
+      <li>Identificación y análisis de <strong>vulnerabilidades</strong> en aplicaciones y servicios mediante herramientas de pentesting.</li>
+      <li>Documentación técnica de hallazgos de seguridad y propuesta de <strong>controles preventivos</strong> para reducir superficie de ataque.</li>
+    </ul>
+  </div>
+  <div class="job">
+    <div class="jh">
+      <span class="jc">Goddard Catering Group</span>
+      <span class="jp">Abr 2024 — Oct 2024</span>
+    </div>
+    <div class="jr">Pasante · Infraestructura TI</div>
+    <ul class="jb">
+      <li>Administración de <strong>Windows Server</strong>, gestión de cuentas de usuario y políticas de acceso corporativas.</li>
+      <li>Configuración y soporte de <strong>redes empresariales</strong>, diagnóstico de conectividad y mantenimiento de equipos de red.</li>
+      <li>Administración de sistemas <strong>Linux (CentOS)</strong>: gestión de servicios, permisos de archivos y usuarios del sistema.</li>
+      <li>Diagnóstico y resolución de fallas en hardware y software de equipos informáticos de la organización.</li>
+    </ul>
+  </div>
+  <div class="job">
+    <div class="jh">
+      <span class="jc">Proyectos académicos & personales</span>
+      <span class="jp">2022</span>
+    </div>
+    <div class="jr">Desarrollador</div>
+    <ul class="jb">
+      <li>Desarrollo de <strong>chatbot</strong> integrado con API Gemini para automatización de respuestas, con base de datos MySQL como backend persistente.</li>
+      <li>Construcción de <strong>entorno sandbox</strong> para compilación y ejecución de código en C y C++, gestionando procesos del sistema.</li>
+      <li>Diseño de plataforma de <strong>curso web de fundamentos de programación orientada a objetos</strong>, incluyendo gestión de usuarios y progreso con PostgreSQL.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="grid3">
+  <div class="section">
+    <div class="sh"><span class="st">Educación</span><div class="sl"></div></div>
+    <div class="edu-block">
+      <div class="edu-degree">Ing. Tecnologías de la Información</div>
+      <div class="edu-uni">Universidad de las Fuerzas Armadas ESPE</div>
+      <span class="edu-badge">Recién graduado · 2026</span>
+    </div>
+  </div>
+  <div class="section">
+    <div class="sh"><span class="st">Idiomas</span><div class="sl"></div></div>
+    <div class="lang-row">
+      <span class="lang-name">Español</span>
+      <div class="lang-level">
+        <div class="ld f"></div><div class="ld f"></div><div class="ld f"></div><div class="ld f"></div><div class="ld f"></div>
+        <span class="lt">Nativo</span>
+      </div>
+    </div>
+    <div class="lang-row">
+      <span class="lang-name">Inglés</span>
+      <div class="lang-level">
+        <div class="ld f"></div><div class="ld f"></div><div class="ld f"></div><div class="ld e"></div><div class="ld e"></div>
+        <span class="lt">B1</span>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="sh"><span class="st">Referencias</span><div class="sl"></div></div>
+    <div class="ref-item">
+      <div class="ref-name">Francisco Tapia</div>
+      <div class="ref-role">Jefe de Sistemas · GCG</div>
+      <div class="ref-c">0996172750</div>
+    </div>
+    <div class="ref-item">
+      <div class="ref-name">Jessica Vinueza</div>
+      <div class="ref-role">CISO · GHL Hoteles</div>
+      <div class="ref-c">0990601390</div>
+    </div>
+  </div>
+</div>
+
+</div>
